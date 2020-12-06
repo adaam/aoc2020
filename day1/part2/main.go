@@ -25,10 +25,10 @@ func main() {
 
 	for i := 0; i < len(lines); i++ {
 		for j := i + 1; j < len(lines); j++ {
-			for k := j+1; k < len(lines); k++ {
+			for k := j + 1; k < len(lines); k++ {
 				if lines[i]+lines[j]+lines[k] == 2020 {
 					fmt.Println(lines[i] * lines[j] * lines[k])
-				} 
+				}
 			}
 		}
 	}
