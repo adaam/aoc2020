@@ -20,6 +20,7 @@ func main() {
 	forest_length := len(lines_str)
 	forest_width := len(lines_str[0])
 	steps := [][]int{{1, 1}, {3, 1}, {5, 1}, {7, 1}, {1, 2}}
+	mul_num := 1
 	for _, v := range steps {
 		right_step := v[0]
 		down_step := v[1]
@@ -29,7 +30,7 @@ func main() {
 				trees_cnt++
 			}
 		}
-		fmt.Println("Trees counts is: " + strconv.Itoa(trees_cnt))
+		mul_num *= trees_cnt
 	}
-
+	fmt.Println("Multiplie all numbers result: " + strconv.Itoa(mul_num))
 }
