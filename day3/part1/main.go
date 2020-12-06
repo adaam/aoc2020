@@ -22,7 +22,7 @@ func main() {
 	right_step := 3
 	down_step := 1
 	trees_cnt := 0
-	for i, j := down_step, right_step; i < forest_length/down_step; i, j = i+down_step, j+right_step {
+	for i, j := down_step, right_step; i < forest_length; i, j = i+down_step, j+right_step {
 		if string(lines_str[i][j%31]) == "#" {
 			trees_cnt++
 		}
