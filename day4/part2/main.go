@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"regexp"
 	"strconv"
 	"strings"
-	"regexp"
 )
 
 func check(e error) {
@@ -29,32 +29,32 @@ func main() {
 		} else {
 			eva = strings.TrimSpace(eva)
 			fields := strings.Split(strings.Replace(string(eva), " ", ":", -1), ":")
-			
-			for i := 0; i < len(fields) ; i += 2 {
+
+			for i := 0; i < len(fields); i += 2 {
 				key := fields[i]
 				value := fields[i+1]
 
 				switch key {
 				case "byr":
 					int_value, _ := strconv.Atoi(value)
-					if int_value >= 1920 && int_value<= 2002 {
+					if int_value >= 1920 && int_value <= 2002 {
 						cnt_field++
 					}
 				case "iyr":
 					int_value, _ := strconv.Atoi(value)
-					if int_value >= 2010 && int_value<= 2020 {
+					if int_value >= 2010 && int_value <= 2020 {
 						cnt_field++
 					}
 				case "eyr":
 					int_value, _ := strconv.Atoi(value)
-					if int_value >= 2020 && int_value<= 2030 {
+					if int_value >= 2020 && int_value <= 2030 {
 						cnt_field++
 					}
 				case "hgt":
 					hgt_length := len(fields[i+1])
 					last_char := string(value[hgt_length-1])
 					if last_char == "m" || last_char == "n" {
-						int_value, _ := strconv.Atoi(value[0:hgt_length-2])
+						int_value, _ := strconv.Atoi(value[0 : hgt_length-2])
 						if last_char == "m" && int_value >= 150 && int_value <= 193 {
 							cnt_field++
 						} else if last_char == "n" && int_value >= 59 && int_value <= 76 {
@@ -72,7 +72,7 @@ func main() {
 						if value == v {
 							cnt_field++
 						}
-					} 
+					}
 				case "pid":
 					format, _ := regexp.Compile("[0-9]{9}")
 					if format.MatchString(value) {
