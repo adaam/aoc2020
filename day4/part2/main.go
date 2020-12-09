@@ -31,9 +31,6 @@ func main() {
 			fields := strings.Split(strings.Replace(string(eva), " ", ":", -1), ":")
 			
 			for i := 0; i < len(fields) ; i += 2 {
-				if i == 0 { 
-					fmt.Println(fields, cnt_field, cnt)
-				 }
 				key := fields[i]
 				value := fields[i+1]
 
@@ -82,8 +79,6 @@ func main() {
 						cnt_field++
 					}
 				}
-				fmt.Println(fields ,key, value, cnt_field)
-				//fmt.Println(cnt_field)
 			}
 			if cnt_field == 7 {
 				cnt++
