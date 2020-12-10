@@ -3,9 +3,10 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+
 	//"strconv"
-	"strings"
 	"sort"
+	"strings"
 )
 
 func check(e error) {
@@ -17,29 +18,31 @@ func check(e error) {
 func main() {
 	content, err := ioutil.ReadFile("input")
 	check(err)
-	lines_str := strings.Split(string(content), "\n")
+	linesStr := strings.Split(string(content), "\n")
 
 	var eva string
+	sum := 0
 
-	for _, v := range lines_str {
+	for _, v := range linesStr {
 		if len(v) > 0 {
 			eva = eva + v
 		} else {
-			eva_split := strings.Split(eva, "")
-			sort.Strings(eva_split)
+			evaSplit := strings.Split(eva, "")
+			sort.Strings(evaSplit)
 			var tmp string
 			cnt := 0
-			for k, v := range eva_split {
-				if k == 1 {
+			for k, v := range evaSplit {
+				if k == 0 {
 					tmp = v
 					cnt++
 				} else if v != tmp {
+					tmp = v
 					cnt++
 				}
 			}
-			fmt.Println(eva_split)
-			fmt.Println(cnt)
+			sum += cnt
 			eva = ""
 		}
 	}
+	fmt.Println(sum)
 }
