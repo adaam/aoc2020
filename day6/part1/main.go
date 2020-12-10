@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	//"strconv"
 	"strings"
+	"sort"
 )
 
 func check(e error) {
@@ -24,7 +25,20 @@ func main() {
 		if len(v) > 0 {
 			eva = eva + v
 		} else {
-			fmt.Println(eva + "\n")
+			eva_split := strings.Split(eva, "")
+			sort.Strings(eva_split)
+			var tmp string
+			cnt := 0
+			for k, v := range eva_split {
+				if k == 1 {
+					tmp = v
+					cnt++
+				} else if v != tmp {
+					cnt++
+				}
+			}
+			fmt.Println(eva_split)
+			fmt.Println(cnt)
 			eva = ""
 		}
 	}
