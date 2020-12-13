@@ -33,6 +33,7 @@ func main() {
 		col_bin := replace(v[7:10], "L", "R")
 		row, _ := strconv.ParseInt(row_bin, 2, 8)
 		col, _ := strconv.ParseInt(col_bin, 2, 4)
+		fmt.Println(row*8 + col)
 		if (row*8 + col) > biggest {
 			biggest = row*8 + col
 		}
